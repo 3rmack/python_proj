@@ -15,6 +15,7 @@ def print_unicode_table(word):
         name = unicodedata.name(c, "*** unknown ***")
         if word is None or word in name.lower():
             print("{0:7} {0:5X} {0:^3c} {1}".format(code, name.title()))
+            #print(name.title())
         code += 1
 
 
