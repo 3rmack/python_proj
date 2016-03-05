@@ -5,6 +5,13 @@ import unicodedata
 words = []
 
 
+def compare(l1, l2):
+    for val in l1:
+        if val in l2:
+            return True
+        return False
+
+
 def print_unicode_table(words):
     print("decimal  hex  chr {0:^40}".format("name"))
     print("------- ----- --- {0:-<40}".format(""))
@@ -16,7 +23,9 @@ def print_unicode_table(words):
         namelower = name.lower()  # конвертим все символы в нижний регистр
         namelist = namelower.split()  # конвертим str в list
         #if words is None or words <= namelist:
-        if words <= namelist:
+        if compare(words, namelist):
+            #print(words)
+            #print(namelist)
             print("{0:7} {0:5X} {0:^3c} {1}".format(code, name.title()))
         code += 1
 
