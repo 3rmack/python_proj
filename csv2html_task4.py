@@ -82,9 +82,9 @@ def extract_fields(line):
 #     text = text.replace(">", "&gt;")
 #     return text
 
-def process_options():
-    maxwidht = 100
-    iformat = ".0f"
+def process_options(maxwidht=100, iformat=".0f"):
+    #maxwidht = 100
+    #iformat = ".0f"
     msg = (
         "usage:\n"
         "csv2html.py [maxwidth=int] [format=str] < infile.csv > outfile.html\n"
