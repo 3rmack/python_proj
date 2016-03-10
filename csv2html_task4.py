@@ -1,4 +1,5 @@
-#import sys
+import sys
+from xml.sax.saxutils import escape
 
 
 def main():
@@ -11,9 +12,9 @@ def main():
             if count == 0:
                 color = "green"
             elif count % 2:
-                color = "lightgrey"
+                color = "white"
             else:
-                color = "grey"
+                color = "yellow"
             print_line(line, color, maxwidth)
             count += 1
         except EOFError:
@@ -36,14 +37,15 @@ def print_line(line, color, maxwidth):
         if not field:
             print("<td></td>")
         else:
-            number = field.replace(",", "")
+            number = field. replace(",", "")
             try:
                 x = float(number)
                 print("<td align='right'>{0:d}</td>".format(round(x)))
             except ValueError:
                 field = field.title()
-                field = field.replace(" And ", " and ")
-                field = escape_html(field)
+                field = field. replace(" And ", " and ")
+                field = escape(field)
+                #field = escape_html(field)
                 if len(field) <= maxwidth:
                     print("<td>{0}</td>".format(field))
                 else:
@@ -74,10 +76,20 @@ def extract_fields(line):
     return fields
 
 
-def escape_html(text):
-    text = text.replace("&", "&amp;")
-    text = text.replace("<", "&lt;")
-    text = text.replace(">", "&gt;")
-    return text
+# def escape_html(text):
+#     text = text.replace("&", "&amp;")
+#     text = text.replace("<", "&lt;")
+#     text = text.replace(">", "&gt;")
+#     return text
+
+def process_options():
+    msg = (
+        "usage:\n"
+        "csv2html.py [maxwidth=int] [format=str] < infile.csv > outfile.html\n"
+        "maxwidth is an optional integer; if specified, it sets the maximum number of characters that can be output for string fields,otherwise a default of 100 characters is used\n"
+        "format is the format to use for numbers; if not specified it defaults to \".Of\""
+        )
+    if sys.argv[1] in ("-h", "--help"):
+        print(msg)
 
 main()
