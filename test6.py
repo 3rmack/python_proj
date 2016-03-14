@@ -1,4 +1,4 @@
-import collections
+# import collections
 # Sale = collections.namedtuple("Sale", "productid customerid date quantity price")
 # sales = []
 # sales.append(Sale(432, 921, "2008-09-14", 3, 7.99))
@@ -10,7 +10,12 @@ import collections
 #     total += sale.quantity * sale.price
 # print("Total ${0:.3f}".format(total))  # выведет: Total $42.46
 
-Aircraft = collections.namedtuple("Aircraft", "manufacturer model seating")
-Seating = collections.namedtuple("Seating", "minimum maximum")
-aircraft = Aircraft("Airbus", "A320-200", Seating(100, 220))
-print(aircraft.manufacturer)
+# Aircraft = collections.namedtuple("Aircraft", "manufacturer model seating")
+# Seating = collections.namedtuple("Seating", "minimum maximum")
+# aircraft = Aircraft("Airbus", "A320-200", Seating(100, 220))
+# print(aircraft.manufacturer)
+
+L = [3, 56, 7, 11, 6]
+def func (a, b, c, d, e):
+    return(a*b*c*d*e)
+print(func(*L))
