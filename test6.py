@@ -25,7 +25,8 @@ leaps = [y for y in range(1900, 1940)]
 print(leaps)
 leaps = [y for y in range(1900, 1940) if y % 4 == 0]
 print(leaps)
-leaps = [y for y in range(1900, 1940) if (y % 4 == 0 and y % 100 != 0) or (y % 400 ==0)]
+leaps = [y for y in range(1900, 1940) if (y
+                                          % 4 == 0 and y % 100 != 0) or (y % 400 ==0)]
 print(leaps)
 
 codes = []
