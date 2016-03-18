@@ -21,22 +21,34 @@
 # print(func(*L))
 
 
-leaps = [y for y in range(1900, 1940)]
-print(leaps)
-leaps = [y for y in range(1900, 1940) if y % 4 == 0]
-print(leaps)
-leaps = [y for y in range(1900, 1940) if (y
-                                          % 4 == 0 and y % 100 != 0) or (y % 400 ==0)]
-print(leaps)
+# leaps = [y for y in range(1900, 1940)]
+# print(leaps)
+# leaps = [y for y in range(1900, 1940) if y % 4 == 0]
+# print(leaps)
+# leaps = [y for y in range(1900, 1940) if (y
+#                                           % 4 == 0 and y % 100 != 0) or (y % 400 ==0)]
+# print(leaps)
+#
+# codes = []
+# for sex in "MF":  # мужская (Male), женская (Female)
+#     for size in "SMLX":  # маленький, средний, большой, очень большой
+#         if sex == "F" and size == "X":
+#             continue
+#         for color in "BGW":  # черный (Black), серый (Gray), белый (White)
+#             codes.append(sex + size + color)
+# print(codes)
+#
+# codes = [s + z + с for s in "MF" for z in "SMLX" for с in "BGW" if not (s == "F" and z == "X")]
+# print(codes)
 
-codes = []
-for sex in "MF":  # мужская (Male), женская (Female)
-    for size in "SMLX":  # маленький, средний, большой, очень большой
-        if sex == "F" and size == "X":
-            continue
-        for color in "BGW":  # черный (Black), серый (Gray), белый (White)
-            codes.append(sex + size + color)
-print(codes)
+# forenames = []
+# surnames = []
+# for names, filename in ((forenames, "generate_test_names\\forenames.txt"), (surnames, "generate_test_names\\surnames.txt")):
+#         for name in open(filename, encoding="utf8"):
+#             names.append(name.rstrip())
+#
+# print(forenames)
+# print(surnames)
 
-codes = [s + z + с for s in "MF" for z in "SMLX" for с in "BGW" if not (s == "F" and z == "X")]
-print(codes)
+for t in zip(range(4), range(0, 10, 2), range(1, 10, 2)):
+    print(t)
