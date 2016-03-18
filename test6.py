@@ -40,7 +40,7 @@
 #
 # codes = [s + z + с for s in "MF" for z in "SMLX" for с in "BGW" if not (s == "F" and z == "X")]
 # print(codes)
-
+#
 # forenames = []
 # surnames = []
 # for names, filename in ((forenames, "generate_test_names\\forenames.txt"), (surnames, "generate_test_names\\surnames.txt")):
@@ -50,5 +50,8 @@
 # print(forenames)
 # print(surnames)
 
-for t in zip(range(4), range(0, 10, 2), range(1, 10, 2)):
-    print(t)
+x = []
+for t in zip(range(-10, 0, 1), range(0, 10, 2), range(1, 10, 2)):
+    x += t
+print(x)
+print(sorted(x))
