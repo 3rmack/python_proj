@@ -21,3 +21,4 @@ for site in sorted(sites):
     print("{0} is referred to in:".format(site))
     for filename in sorted(sites[site], key=str.lower):
         print(" {0}".format(filename))
+#print(sites)
