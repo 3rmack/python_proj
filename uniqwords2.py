@@ -1,6 +1,8 @@
 import string
 import sys
 import collections
+
+
 words = collections.defaultdict(int)
 strip = string.whitespace + string.punctuation + string.digits + "\"'"
 for filename in sys.argv[1:]:
