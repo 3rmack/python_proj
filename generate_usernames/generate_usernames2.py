@@ -26,17 +26,30 @@ def generate_username(fields, usernames):
 def print_users(users):
     namewidth = 17
     usernamewidth = 9
-    print("{0:<{nw}} {1:^6} {2:{uw}}".format("Name", "ID", "Username", nw=namewidth, uw=usernamewidth))
-    print("{0:-<{nw}} {0:-<6} {0:-<{uw}}".format("", nw=namewidth, uw=usernamewidth))
+    lines = []
+    head1 = "{0:<{nw}} {1:^6} {2:{uw}}".format("Name", "ID", "Username", nw=namewidth, uw=usernamewidth)
+    head2 = "{0:-<{nw}} {0:-<6} {0:-<{uw}}".format("", nw=namewidth, uw=usernamewidth)
     for key in sorted(users):
         user = users[key]
         initial = ""
         if user.middlename:
             initial = " " + user.middlename[0]
-        name = "{0.surname}, {0.forename}{1}".format(user, initial, nw=namewidth)  # формируем строку
+        name = "{0.surname}, {0.forename}{1}".format(user, initial, nw=namewidth)  # формируем строку имени
         name = "{0:<.{nw}}".format(name, nw=namewidth)  # урезаем строку
-        print(name)
-        print("{0:.<{nw}} ({1.id:4}) {1.username:{uw}}".format(name, user, nw=namewidth, uw=usernamewidth))
+        #print(name)
+        lines.append(("{0:.<{nw}} ({1.id:4}) {1.username:{uw}}".format(name, user, nw=namewidth, uw=usernamewidth)))  # сохраняем все строки вывода с список
+    lcount = 0
+    print("{0}  {0}".format(head1))
+    print("{0}  {0}".format(head2))
+    for i in range(0, len(lines), 2):  # цикл только с четными числами
+        print("{0}  {1}".format(lines[i], lines[i+1]))  # вызываем и печатаем элементы из списка парами
+        lcount += 1
+        if lcount == 10:
+            print('\f')
+            lcount = 0
+            print("{0}  {0}".format(head1))
+            print("{0}  {0}".format(head2))
+        #print(lines[i]+" "+lines[i+1])
 
 
 def main():
