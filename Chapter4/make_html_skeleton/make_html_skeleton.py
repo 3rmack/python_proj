@@ -41,7 +41,7 @@ def main():
 
 
 def populate_information(information):
-    name = get_string("'Enter your name (for copyright)", "'name", information["name"])
+    name = get_string("Enter your name (for copyright)", "name", information["name"])
     if not name:
         raise CancelledError()
     year = get_integer("Enter copyright year", "year", information["year"], 2000, datetime.date.today(). year + 1, True)
