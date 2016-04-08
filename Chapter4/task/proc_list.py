@@ -23,7 +23,7 @@ def main():
                     user_input = input("Enter filename: ")
                     if not user_input.endswith(".lst"):
                         user_input += ".lst"
-                    add_item(user_input, file_list)
+                    add_item_to_list(user_input, file_list)
                 elif user_input in "Qq":
                     sys.exit("Exit")
                 else:
@@ -104,14 +104,17 @@ def process_user_input_str(user_input, file_list):
                 user_input_2 = int(user_input_2)
                 process_user_input_int(user_input_2, file_list)
             except ValueError:
+                if not user_input_2.endswith(".lst"):
+                    user_input_2 += ".lst"
                 if user_input_2 in file_list:
                     print_file(user_input_2)
-        else:
-            user_input_2 = get_user_input(2)
-            if user_input_2 in "Aa":
-                if not user_input.endswith(".lst"):
-                    user_input += ".lst"
-                add_item(user_input, file_list)
+        elif user_input in "Ss":
+            save_list(file_list)
+        elif user_input in "Aa":
+            user_input_2 = get_user_input(1)
+            if not user_input_2.endswith(".lst"):
+                user_input_2 += ".lst"
+                add_item_to_list(user_input_2, file_list)
             else:
                 #print_output(file_list)
                 return
@@ -133,12 +136,21 @@ def print_file(user_input):
         print()
 
 
-def add_item(user_input, file_list):
+def add_item_to_list(user_input, file_list):
     print("Adding {0} to list...".format(user_input))
-    new_file = open(user_input, "w")
-    new_file.write("")
-    new_file.close()
     file_list.append(user_input)
+
+
+def save_list(file_list):
+    print("Saving...")
+    for file in file_list:
+        try:
+            os.stat(file).st_size
+        except FileNotFoundError:
+            print("File {0} not found. Creating...".format(file))
+            new_file = open(file, "w")
+            new_file.write("")
+            new_file.close()
 
 
 main()
