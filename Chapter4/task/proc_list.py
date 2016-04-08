@@ -97,7 +97,23 @@ def process_user_input_str(user_input, file_list):
                 print("No such file")
                 return
         elif user_input in "Qq":
-            raise ExitError
+            save_trigger = 0
+            for file in file_list:
+
+                try:
+                    os.stat(file).st_size
+                except FileNotFoundError:
+                    save_trigger = 1
+            if save_trigger == 0:
+                raise ExitError
+            else:
+                print("Unsaved elements detected")
+                user_input_2 = get_user_input(2)
+                if user_input_2 in "Aa":
+                    save_list(file_list)
+                    raise ExitError
+                else:
+                    raise ExitError
         elif user_input in "Rr":
             user_input_2 = get_user_input(4)
             try:
@@ -114,10 +130,7 @@ def process_user_input_str(user_input, file_list):
             user_input_2 = get_user_input(1)
             if not user_input_2.endswith(".lst"):
                 user_input_2 += ".lst"
-                add_item_to_list(user_input_2, file_list)
-            else:
-                #print_output(file_list)
-                return
+            add_item_to_list(user_input_2, file_list)
     except ExitError:
         sys.exit("Exit")
     # except BackError:
