@@ -1,0 +1,10 @@
+4
+a
+b : a c d
+d : f
+f : a
+4
+a a
+a f
+d b
+b d

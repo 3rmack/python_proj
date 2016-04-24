@@ -1,0 +1,8 @@
+5
+a : b u
+b : c d
+c : e
+e : f g
+g : r
+1
+r a
