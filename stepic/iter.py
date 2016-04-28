@@ -26,6 +26,7 @@ class RandomIterator:
 for x in RandomIterator(10):
     print(x)
 
+
 class DoubleElementListIterator:
     def __init__(self, lst):
         self.lst = lst

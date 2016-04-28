@@ -21,4 +21,6 @@ def random_generator(k):
     for i in range(k):
         yield random()
 
-gen = random_generator(3)
+gen = random_generator(4)
+for g in gen:
+    print(g)
