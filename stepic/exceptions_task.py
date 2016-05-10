@@ -16,29 +16,34 @@ def classes_dict(n):
     return d
 
 
-def question(d, q):
-    answers = []
+def question_lst(q):
+    ql = []
     for i in range(q):
         input_str = input()
-        question_list = input_str.split()
-        parents = []
-        parents_all = get_parents(d, question_list[1], parents)
-        # print(parents_all)
-        # answer = check(d, question_list[0], question_list[1])
-        # answers.append(answer)
-        if question_list[0] in parents_all or question_list[0] == question_list[1]:
-            answers.append("Yes")
-        else:
-            answers.append("No")
+        ql.append(input_str)
+    return ql
+
+
+def question(d, ql):
+    answers = []
+    for index in range(len(ql)):
+        parents = set()
+        parents_all = get_parents(d, ql[index], parents)
+        # print("{0}: {1}".format(ql[index], parents_all))
+        for called_earlier_class in ql[:index]:
+            # print(question_str)
+            # print(parents_all)
+            if called_earlier_class in parents_all and ql[index] not in answers:
+                answers.append(ql[index])
     return answers
 
 
 def get_parents(d, child, parents):
     for parent in d[child]:
-        parents.append(parent)
+        parents.add(parent)
         try:
             for parent_parent in d[parent]:
-                parents.append(parent_parent)
+                parents.add(parent_parent)
                 get_parents(d, parent_parent, parents)
         except KeyError:
             continue
@@ -48,14 +53,12 @@ def get_parents(d, child, parents):
 def main():
     n = get_input()
     d = classes_dict(n)
-    #print(d)
     q = get_input()
-    answers = question(d, q)
-    #print(answers)
-    # print(d["classD"])
-    # print(d["classG"])
-    # print(d["classF"])
-    # print(d["classH"])
+    ql = question_lst(q)
+    answers = question(d, ql)
+    # print(d)
+    # print(ql)
+    # print(answers)
     for answer in answers:
         print(answer)
 
