@@ -1,0 +1,6 @@
+Vitebsk  - 411
+Gomel    - 555
+Mogilev  - 500
+Minsk    - 1666
+Grodno   - 375
+Brest    - 363
